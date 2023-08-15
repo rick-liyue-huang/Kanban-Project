@@ -10,7 +10,7 @@ export const getTasksGroupedByColumn = async () => {
 
   const tasks = data.documents;
 
-  const columns = tasks.reduce((acc: any, task: any) => {
+  const columns = tasks.reduce((acc, task) => {
     if (!acc.get(task.status)) {
       acc.set(task.status, {
         id: task.status,
