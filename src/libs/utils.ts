@@ -6,9 +6,11 @@ export const getTasksGroupedByColumn = async () => {
     process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID as string,
     process.env.NEXT_PUBLIC_APPWRITE_DATABASE_COLLECTION_TASKS_ID as string
   );
-  console.log(data);
+  console.log('data: ', data);
 
   const tasks = data.documents;
+
+  console.log('tasks: ', tasks);
 
   const columns = tasks.reduce((acc, task) => {
     if (!acc.get(task.status)) {
@@ -30,7 +32,7 @@ export const getTasksGroupedByColumn = async () => {
     return acc;
   }, new Map<ColumnType, ColumnValue>());
 
-  console.log(columns);
+  console.log('columns: ', columns);
 
   // if columns does not match the status, add them with empty tasks
   const columnTypes: ColumnType[] = ['plan', 'inprocess', 'completed'];
@@ -56,8 +58,3 @@ export const getTasksGroupedByColumn = async () => {
 
   return board;
 };
-
-/**
- *
- *
- */
