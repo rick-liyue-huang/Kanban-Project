@@ -5,6 +5,7 @@ import { getTasksGroupedByColumn } from '@/libs/utils';
 interface BoardState {
   board: BoardI;
   getBoard: () => void;
+  setBoard: (board: BoardI) => void;
 }
 
 export const useBoardStore = create<BoardState>((set) => ({
@@ -15,4 +16,5 @@ export const useBoardStore = create<BoardState>((set) => ({
     const board = await getTasksGroupedByColumn();
     set({ board });
   },
+  setBoard: (board) => set({ board }),
 }));
